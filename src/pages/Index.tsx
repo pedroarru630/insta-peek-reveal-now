@@ -1,8 +1,14 @@
-
 import React from 'react';
 import { User, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleOthersProfileClick = () => {
+    navigate('/investigate');
+  };
+
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col">
       {/* Progress Bar */}
@@ -51,7 +57,10 @@ const Index = () => {
               Meu próprio perfil
             </button>
             
-            <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center gap-3 transition-colors">
+            <button 
+              onClick={handleOthersProfileClick}
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center gap-3 transition-colors"
+            >
               <Users size={20} />
               Perfil de outras pessoas
             </button>
