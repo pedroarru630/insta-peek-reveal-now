@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { User, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +8,10 @@ const Index = () => {
 
   const handleOthersProfileClick = () => {
     navigate('/investigate');
+  };
+
+  const handleMyProfileClick = () => {
+    navigate('/investigate'); // For now, both options go to investigate - can be changed later
   };
 
   return (
@@ -52,7 +57,10 @@ const Index = () => {
 
           {/* Buttons */}
           <div className="space-y-4">
-            <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center gap-3 transition-colors">
+            <button 
+              onClick={handleMyProfileClick}
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center gap-3 transition-colors"
+            >
               <User size={20} />
               Meu próprio perfil
             </button>

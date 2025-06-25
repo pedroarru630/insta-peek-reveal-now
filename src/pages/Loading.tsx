@@ -1,8 +1,20 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { LoaderCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Loading = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Auto-redirect to confirmation after 3 seconds
+    const timer = setTimeout(() => {
+      navigate('/confirmation');
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col">
       {/* Progress Bar */}

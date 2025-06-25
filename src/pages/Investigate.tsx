@@ -1,77 +1,97 @@
-
 import React from 'react';
+import { ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Investigate = () => {
+  const navigate = useNavigate();
+
+  const handleContinue = () => {
+    navigate('/loading');
+  };
+
+  const handleBack = () => {
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col">
       {/* Progress Bar */}
       <div className="w-full h-1 bg-gray-300">
-        <div className="h-full bg-orange-500 w-1/4"></div>
+        <div className="h-full bg-orange-500 w-1/3"></div>
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex items-start justify-center p-4 pt-8">
-        <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-md mx-auto">
-          {/* Detective Icon */}
-          <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center">
-              <div className="text-white text-2xl">
-                {/* Hat and glasses icon representation */}
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 20C8 20 12 16 20 16C28 16 32 20 32 20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="15" cy="20" r="3" stroke="white" strokeWidth="2" fill="none"/>
-                  <circle cx="25" cy="20" r="3" stroke="white" strokeWidth="2" fill="none"/>
-                  <path d="M10 12C10 12 14 8 20 8C26 8 30 12 30 12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
+      {/* Main Content - Scrollable */}
+      <div className="flex-1 overflow-y-auto pb-20">
+        <div className="max-w-md mx-auto p-4">
+          
+          {/* Main Card */}
+          <div className="bg-white rounded-3xl shadow-lg p-8 mb-6">
+            {/* Detective Icon */}
+            <div className="flex justify-center mb-6">
+              <div className="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center">
+                <div className="text-white text-2xl">
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 20C8 20 12 16 20 16C28 16 32 20 32 20" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="15" cy="20" r="3" stroke="white" strokeWidth="2" fill="none"/>
+                    <circle cx="25" cy="20" r="3" stroke="white" strokeWidth="2" fill="none"/>
+                    <path d="M10 12C10 12 14 8 20 8C26 8 30 12 30 12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Title */}
-          <h1 className="text-2xl font-bold text-gray-800 text-center mb-2">
-            Descubra agora
-          </h1>
+            {/* Title */}
+            <h1 className="text-2xl font-bold text-gray-800 text-center mb-2">
+              Descubra agora
+            </h1>
 
-          {/* Subtitle */}
-          <p className="text-gray-600 text-center mb-8 text-sm leading-relaxed">
-            Tudo que acontece no instagram<br />
-            de outras pessoas
-          </p>
-
-          {/* Input Section */}
-          <div className="mb-6">
-            <p className="text-gray-700 text-center mb-4 text-sm font-medium">
-              Digite o instagram dele(a) abaixo:
+            {/* Subtitle */}
+            <p className="text-gray-600 text-center mb-8 text-sm leading-relaxed">
+              Tudo que acontece no instagram<br />
+              de outras pessoas
             </p>
-            
-            <div className="relative mb-3">
+
+            {/* Input Section */}
+            <div className="mb-6">
+              <label className="block text-gray-700 text-sm font-medium mb-3">
+                Digite o instagram dele(a) abaixo:
+              </label>
               <input
                 type="text"
                 placeholder="@afelopes"
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-2xl text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               />
-              <div className="absolute left-4 top-3 text-gray-400">@</div>
+              <p className="text-sm text-gray-500 mt-2">
+                Dados seguros, não é necessário sua senha
+              </p>
             </div>
-            
-            <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 1L3 5V11C3 16 6 20 12 23C18 20 21 16 21 11V5L12 1Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span>Dados seguros, não é necessário sua senha</span>
+
+            {/* Warning Block */}
+            <div className="bg-orange-50 border border-orange-200 rounded-2xl p-4 mb-6">
+              <p className="text-orange-600 text-sm font-medium">
+                ⚠️ Atenção: Limite de apenas 1 PESQUISA por dispositivo
+              </p>
             </div>
+
+            {/* Main Button */}
+            <button 
+              onClick={handleContinue}
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-2xl mb-4 transition-colors"
+            >
+              Continuar
+            </button>
+
+            {/* Back Button */}
+            <button 
+              onClick={handleBack}
+              className="w-full flex items-center justify-center gap-2 text-gray-600 py-2"
+            >
+              <ArrowLeft size={16} />
+              <span>Voltar</span>
+            </button>
           </div>
 
-          {/* Warning Box */}
-          <div className="bg-orange-500 text-white p-4 rounded-2xl mb-8 flex items-start gap-3">
-            <div className="text-xl">⚠️</div>
-            <div>
-              <p className="font-semibold text-sm">Atenção</p>
-              <p className="text-sm">Limite de apenas <strong>1 PESQUISA</strong> por dispositivo</p>
-            </div>
-          </div>
-
-          {/* Feedback Section */}
+          {/* Feedbacks Section */}
           <div className="mb-6">
             <h2 className="text-xl font-bold text-gray-800 text-center mb-6">
               FeedBacks

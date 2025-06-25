@@ -1,8 +1,19 @@
 
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Confirmation = () => {
+  const navigate = useNavigate();
+
+  const handleContinue = () => {
+    navigate('/results');
+  };
+
+  const handleCorrect = () => {
+    navigate('/investigate');
+  };
+
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col">
       {/* Progress Bar */}
@@ -38,12 +49,18 @@ const Confirmation = () => {
           </p>
 
           {/* Main Button */}
-          <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-2xl mb-4 transition-colors">
+          <button 
+            onClick={handleContinue}
+            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-2xl mb-4 transition-colors"
+          >
             Continuar, está correto!
           </button>
 
           {/* Correction Link */}
-          <button className="w-full flex items-center justify-center gap-2 text-gray-600 py-2">
+          <button 
+            onClick={handleCorrect}
+            className="w-full flex items-center justify-center gap-2 text-gray-600 py-2"
+          >
             <ArrowLeft size={16} />
             <span>Corrigir</span>
           </button>
